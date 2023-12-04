@@ -1,0 +1,194 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbkpfum31rtav"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_maxja"]
+[ext_resource type="PackedScene" uid="uid://bkpkxbjy4fnmp" path="res://Scenes/Player/player.tscn" id="1_y0774"]
+[ext_resource type="PackedScene" uid="uid://c76g725i6phfu" path="res://Scenes/UI/ui.tscn" id="3_s2u01"]
+[ext_resource type="Theme" uid="uid://d7nrdcruy5js" path="res://Scenes/UI/new_theme.tres" id="4_qjeyn"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_maxja")
+
+[node name="Ground" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Decals" type="Node2D" parent="."]
+
+[node name="Eneimes" type="Node2D" parent="."]
+
+[node name="player" parent="." instance=ExtResource("1_y0774")]
+position = Vector2(716, 447)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+
+[node name="Projectiles" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("3_s2u01")]
+process_mode = 3
+
+[node name="Overlay" type="ColorRect" parent="UI"]
+visible = false
+modulate = Color(0, 0, 0, 0.454902)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game Over" type="Label" parent="UI"]
+visible = false
+modulate = Color(0.25098, 0.85098, 0, 1)
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.292
+anchor_right = 0.5
+anchor_bottom = 0.292
+offset_left = -91.0
+offset_right = 91.0
+offset_bottom = 33.0
+grow_horizontal = 2
+theme = ExtResource("4_qjeyn")
+text = "YOU DIED"
+
+[node name="Main Menu" type="Button" parent="UI"]
+visible = false
+modulate = Color(0, 1, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -19.0
+offset_right = 125.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_qjeyn")
+text = "Main Menu"
+
+[node name="Pause" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Overlay" type="ColorRect" parent="UI/Pause"]
+modulate = Color(0, 0, 0, 0.454902)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="pause label" type="Label" parent="UI/Pause"]
+modulate = Color(0, 1, 0.211765, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.191
+anchor_right = 0.5
+anchor_bottom = 0.191
+offset_left = -146.5
+offset_right = 146.5
+offset_bottom = 33.0
+grow_horizontal = 2
+theme = ExtResource("4_qjeyn")
+text = "Game Paused"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Pause"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -44.0
+offset_right = 150.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Resume" type="Button" parent="UI/Pause/VBoxContainer"]
+modulate = Color(0.211765, 1, 0.219608, 1)
+layout_mode = 2
+theme = ExtResource("4_qjeyn")
+text = "Resume"
+
+[node name="main menu" type="Button" parent="UI/Pause/VBoxContainer"]
+modulate = Color(0.211765, 1, 0.219608, 1)
+layout_mode = 2
+theme = ExtResource("4_qjeyn")
+text = "Main Menu
+"
+
+[node name="Victory" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/Victory"]
+modulate = Color(0, 0, 0, 0.482353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Victory text" type="Label" parent="UI/Victory"]
+modulate = Color(0, 1, 0.00784314, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.225
+anchor_right = 0.5
+anchor_bottom = 0.225
+offset_left = -264.0
+offset_right = 264.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme = ExtResource("4_qjeyn")
+text = "Mission Success!
+
+The Bunker Is Now Safe!"
+horizontal_alignment = 1
+
+[node name="Main Menu" type="Button" parent="UI/Victory"]
+modulate = Color(0.211765, 1, 0.164706, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -19.0
+offset_right = 125.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_qjeyn")
+text = "Main Menu"
+
+[connection signal="shot" from="player" to="." method="_on_player_shot"]
+[connection signal="throw" from="player" to="." method="_on_player_throw"]
+[connection signal="pressed" from="UI/Main Menu" to="UI" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="UI/Pause/VBoxContainer/Resume" to="UI" method="_on_resume_pressed"]
+[connection signal="pressed" from="UI/Pause/VBoxContainer/main menu" to="UI" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="UI/Victory/Main Menu" to="UI" method="_on_main_menu_pressed"]

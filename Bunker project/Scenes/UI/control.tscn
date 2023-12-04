@@ -1,0 +1,226 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7irvmhg4mwmy"]
+
+[ext_resource type="Script" path="res://Control.gd" id="1_5w66i"]
+[ext_resource type="Texture2D" uid="uid://k2pek5b1x8yi" path="res://graphics/underground-bunker-with-secret-laboratory-vector-background-shelter-science-lab-room-interior-with-door-generative-ai-free-photo.jpeg" id="2_2cjeh"]
+[ext_resource type="Theme" uid="uid://d7nrdcruy5js" path="res://Scenes/UI/new_theme.tres" id="3_8pdaq"]
+[ext_resource type="AudioStream" uid="uid://dp7i8qqgoqefj" path="res://audio/rise-above-178316.mp3" id="4_0iaq5"]
+
+[node name="Menu" type="Control"]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5w66i")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2cjeh")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.439216, 1, 0.133333, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.146
+anchor_right = 0.5
+anchor_bottom = 0.185
+offset_left = -126.5
+offset_right = 126.5
+offset_bottom = 26.0
+grow_horizontal = 2
+theme = ExtResource("3_8pdaq")
+text = "Bunker Invasion"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.5
+offset_right = 50.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+modulate = Color(0.176471, 1, 0.156863, 1)
+layout_mode = 2
+theme = ExtResource("3_8pdaq")
+text = "Start
+"
+
+[node name="How" type="Button" parent="VBoxContainer"]
+modulate = Color(0.176471, 1, 0.156863, 1)
+layout_mode = 2
+theme = ExtResource("3_8pdaq")
+text = "How to play"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+modulate = Color(0.176471, 1, 0.156863, 1)
+layout_mode = 2
+theme = ExtResource("3_8pdaq")
+text = "Exit"
+
+[node name="How to play" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_8pdaq")
+
+[node name="TextureRect" type="TextureRect" parent="How to play"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2cjeh")
+expand_mode = 3
+
+[node name="overlay" type="ColorRect" parent="How to play"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.568627)
+
+[node name="Label" type="Label" parent="How to play"]
+modulate = Color(0.235294, 1, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.146
+anchor_right = 0.5
+anchor_bottom = 0.146
+offset_left = -139.0
+offset_right = 139.0
+offset_bottom = 33.0
+grow_horizontal = 2
+text = "How to play"
+
+[node name="Label2" type="Label" parent="How to play"]
+modulate = Color(0.0627451, 1, 0.466667, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.388
+anchor_right = 0.5
+anchor_bottom = 0.4
+offset_left = -175.0
+offset_top = -73.5
+offset_right = 175.0
+offset_bottom = 73.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "wasd/arrows: Movement
+
+
+left click/space: Fire
+
+
+Right click/ lctrl: grenade
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="How to play"]
+modulate = Color(0.0627451, 1, 0.466667, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.567
+anchor_right = 0.5
+anchor_bottom = 0.567
+offset_left = -20.0
+offset_top = -15.0
+offset_right = 20.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Hit crates and toilets to obtain different items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="How to play"]
+modulate = Color(0.0627451, 1, 0.466667, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.657
+anchor_right = 0.5
+anchor_bottom = 0.657
+offset_left = -20.0
+offset_top = -15.0
+offset_right = 20.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Be carfeful of all enemies and their different behaviours"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="How to play"]
+modulate = Color(0.0627451, 1, 0.466667, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.741
+anchor_right = 0.5
+anchor_bottom = 0.787
+offset_left = -357.5
+offset_top = -30.0
+offset_right = 357.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 22
+text = "Cleanse the area from all enemies to save the bunker"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="How to play"]
+modulate = Color(0, 1, 0, 1)
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.91
+anchor_right = 0.5
+anchor_bottom = 0.955
+offset_left = -56.5
+offset_top = -38.0
+offset_right = 56.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0iaq5")
+volume_db = -25.0
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/How" to="." method="_on_how_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="How to play/Back" to="." method="_on_back_pressed"]

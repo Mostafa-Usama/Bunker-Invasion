@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://c76g725i6phfu"]
+
+[ext_resource type="Texture2D" uid="uid://dou0cde1iq1ge" path="res://graphics/ui/bullet.png" id="1_0jrqn"]
+[ext_resource type="FontFile" uid="uid://dyo8qyoful8c0" path="res://graphics/ui/subatomic.tsoonami.ttf" id="1_4erip"]
+[ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_jlbja"]
+[ext_resource type="Texture2D" uid="uid://bfo85axux77es" path="res://graphics/ui/grenade.png" id="2_ogyo7"]
+[ext_resource type="Theme" uid="uid://d7nrdcruy5js" path="res://Scenes/UI/new_theme.tres" id="3_2fs6y"]
+[ext_resource type="Texture2D" uid="uid://ddldupklm2c4c" path="res://graphics/ui/progress_bar/bg.png" id="5_wml5x"]
+[ext_resource type="Texture2D" uid="uid://df0jidymfeqkt" path="res://graphics/ui/progress_bar/over.png" id="6_02fvh"]
+[ext_resource type="Texture2D" uid="uid://cqrl6thxjjcun" path="res://graphics/ui/progress_bar/progress.png" id="7_0u8h6"]
+
+[sub_resource type="Theme" id="Theme_21ixi"]
+default_font = ExtResource("1_4erip")
+default_font_size = 30
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_jlbja")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Health Bar" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 50
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/Health Bar"]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("5_wml5x")
+texture_over = ExtResource("6_02fvh")
+texture_progress = ExtResource("7_0u8h6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 30
+
+[node name="Bullets Counter" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Bullets Counter"]
+modulate = Color(0.317647, 0.694118, 0.321569, 1)
+layout_mode = 2
+theme = SubResource("Theme_21ixi")
+text = "20
+"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Bullets Counter"]
+layout_mode = 2
+texture = ExtResource("1_0jrqn")
+expand_mode = 4
+
+[node name="Grenade Counter" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Grenade Counter"]
+modulate = Color(0.317647, 0.694118, 0.321569, 1)
+layout_mode = 2
+theme = ExtResource("3_2fs6y")
+text = "20"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Grenade Counter"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+texture = ExtResource("2_ogyo7")
+expand_mode = 4

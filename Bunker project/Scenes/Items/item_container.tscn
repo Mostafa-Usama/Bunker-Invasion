@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb7dm4duc1d3u"]
+
+[ext_resource type="Script" path="res://Scenes/Items/item_container.gd" id="1_62kjn"]
+[ext_resource type="PackedScene" uid="uid://3i0ymbfbn1e" path="res://Scenes/Items/items.tscn" id="2_vu0t4"]
+
+[node name="ItemContainer" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_62kjn")
+
+[node name="container" type="Sprite2D" parent="."]
+
+[node name="lid" type="Sprite2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="itemsChildren" type="Node2D" parent="."]
+
+[node name="Items" parent="itemsChildren" instance=ExtResource("2_vu0t4")]
+visible = false

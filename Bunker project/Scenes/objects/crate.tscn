@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgg1p005hrr62"]
+
+[ext_resource type="Texture2D" uid="uid://4d53w3skwxl1" path="res://graphics/objects/box/base.png" id="1_kf3pk"]
+[ext_resource type="PackedScene" uid="uid://cb7dm4duc1d3u" path="res://Scenes/Items/item_container.tscn" id="1_tbqci"]
+[ext_resource type="Texture2D" uid="uid://car7p0uywuf7b" path="res://graphics/objects/box/lid.png" id="2_mld2t"]
+[ext_resource type="Script" path="res://Scenes/objects/crate.gd" id="2_w5lrm"]
+[ext_resource type="PackedScene" uid="uid://3i0ymbfbn1e" path="res://Scenes/Items/items.tscn" id="5_vaq3n"]
+[ext_resource type="AudioStream" uid="uid://b3ho0y4ylgt5m" path="res://audio/container_hit.mp3" id="6_bgy4l"]
+
+[node name="Crate" instance=ExtResource("1_tbqci")]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("2_w5lrm")
+
+[node name="container" parent="." index="0"]
+texture = ExtResource("1_kf3pk")
+
+[node name="lid" parent="." index="1"]
+texture = ExtResource("2_mld2t")
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+polygon = PackedVector2Array(186.667, 88.3333, 203.333, 80, 196.667, -66.6667, 183.333, -85, -181.667, -91.6667, -200, -66.6667, -201.667, 58.3333, -203.333, 76.6667, -195, 90)
+
+[node name="Items2" parent="itemsChildren" index="1" instance=ExtResource("5_vaq3n")]
+visible = false
+position = Vector2(153.333, -23.3333)
+
+[node name="Items3" parent="itemsChildren" index="2" instance=ExtResource("5_vaq3n")]
+visible = false
+position = Vector2(-156.667, -5)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("6_bgy4l")

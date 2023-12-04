@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmvrivpjhniic"]
+
+[ext_resource type="Script" path="res://Scenes/objects/toilet.gd" id="1_4h052"]
+[ext_resource type="PackedScene" uid="uid://cb7dm4duc1d3u" path="res://Scenes/Items/item_container.tscn" id="1_chvbl"]
+[ext_resource type="Texture2D" uid="uid://3q7n8axrovax" path="res://graphics/objects/toilet.png" id="1_le0ws"]
+[ext_resource type="Texture2D" uid="uid://dl6j6bynyr8p3" path="res://graphics/objects/lid.png" id="3_3sehy"]
+[ext_resource type="AudioStream" uid="uid://b3ho0y4ylgt5m" path="res://audio/container_hit.mp3" id="5_2gpjj"]
+
+[node name="Toilet" instance=ExtResource("1_chvbl")]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_4h052")
+
+[node name="container" parent="." index="0"]
+texture = ExtResource("1_le0ws")
+
+[node name="lid" parent="." index="1"]
+position = Vector2(0, 20)
+texture = ExtResource("3_3sehy")
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+polygon = PackedVector2Array(41.6667, 96.6667, 85, 41.6667, 105, -40, 86.6667, -55, 110, -61.6667, 116.667, -96.6667, 93.3333, -120, -88.3333, -125, -118.333, -101.667, -116.667, -63.3333, -90, -61.6667, -103.333, -43.3333, -96.6667, 36.6667, -40, 103.333, 5, 125)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("5_2gpjj")

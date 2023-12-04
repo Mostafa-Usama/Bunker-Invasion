@@ -1,0 +1,298 @@
+[gd_scene load_steps=16 format=3 uid="uid://b63m4ojfrpc8x"]
+
+[ext_resource type="Texture2D" uid="uid://dy2su80metdwq" path="res://graphics/car/main.png" id="1_nn72j"]
+[ext_resource type="Script" path="res://Scenes/Enemies/car.gd" id="1_u0kqo"]
+[ext_resource type="Script" path="res://Scenes/Enemies/CarBody.gd" id="2_at153"]
+[ext_resource type="Texture2D" uid="uid://bi1xslkoa42tn" path="res://graphics/car/turret.png" id="2_fdd8a"]
+[ext_resource type="Texture2D" uid="uid://1pu3lhx24di1" path="res://graphics/explosions/gun.png" id="4_xfh7b"]
+[ext_resource type="Texture2D" uid="uid://dsn2snydr7q8v" path="res://graphics/explosions/explosion_1.png" id="6_ot1k3"]
+[ext_resource type="AudioStream" uid="uid://h288aohvl0ja" path="res://audio/explosion.wav" id="7_2b6od"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g3udg"]
+radius = 665.057
+
+[sub_resource type="Animation" id="Animation_tw5ne"]
+resource_name = "Explode"
+length = 2.5
+
+[sub_resource type="Animation" id="Animation_e4srx"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_2ftef"]
+resource_name = "RedLight"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Turret/RayCast2D/Line2D:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.8, 1.97),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 10.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Turret/RayCast2D2/Line2D2:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 10.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterBody2D/Turret/Nozzle 1:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterBody2D/Turret/Nozzle 2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ax67d"]
+_data = {
+"Explode": SubResource("Animation_tw5ne"),
+"RESET": SubResource("Animation_e4srx"),
+"RedLight": SubResource("Animation_2ftef")
+}
+
+[sub_resource type="Animation" id="Animation_ii0he"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [22]
+}
+
+[sub_resource type="Animation" id="Animation_8is3v"]
+resource_name = "explode"
+length = 2.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Explosion:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"destroyed"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Red Light")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"stop"
+}]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_2b6od")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/6/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_use61"]
+_data = {
+"RESET": SubResource("Animation_ii0he"),
+"explode": SubResource("Animation_8is3v")
+}
+
+[node name="Car" type="PathFollow2D"]
+script = ExtResource("1_u0kqo")
+
+[node name="Alert Area" type="Area2D" parent="."]
+scale = Vector2(0.8, 0.8)
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alert Area"]
+shape = SubResource("CircleShape2D_g3udg")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(0.8, 0.8)
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("2_at153")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+polygon = PackedVector2Array(110, 162.5, 6.25, 168.75, 3.75, 123.75, -52.5, 135, -90, 106.25, -91.25, 166.25, -120, 187.5, -195, 183.75, -227.5, 171.25, -231.25, 111.25, -206.25, 105, -201.25, 77.5, -231.25, 80, -231.25, 42.5, -273.75, 45, -297.5, 28.75, -295, -37.5, -278.75, -43.75, -266.25, -48.75, -246.25, -51.25, -231.25, -47.5, -231.25, -78.75, -201.25, -76.25, -211.25, -107.5, -235, -110, -228.75, -175, -160, -185, -100, -171.25, -87.5, -153.75, -92.5, -120, -122.5, -103.75, -108.75, -85, -62.5, -131.25, -2.5, -125, 7.5, -162.5, 46.25, -172.5, 112.5, -171.25, 126.25, -140, 118.75, -120, 100, -106.25, 122.5, -97.5, 147.5, -97.5, 140, -155, 170, -116.25, 186.25, -85, 186.25, 88.75, 172.5, 127.5, 140, 156.25, 147.5, 113.75, 125, 90, 95, 110, 117.5, 116.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+rotation = 1.5708
+texture = ExtResource("1_nn72j")
+
+[node name="Turret" type="Node2D" parent="CharacterBody2D"]
+
+[node name="Sprite" type="Sprite2D" parent="CharacterBody2D/Turret"]
+position = Vector2(-37.5, -5)
+rotation = 1.5708
+texture = ExtResource("2_fdd8a")
+
+[node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D/Turret"]
+position = Vector2(75, 25)
+target_position = Vector2(600, 0)
+
+[node name="Line2D" type="Line2D" parent="CharacterBody2D/Turret/RayCast2D"]
+points = PackedVector2Array(-3.74999, -2.5, 587.5, -2.5)
+width = 0.0
+default_color = Color(1, 0, 0.0470588, 0.705882)
+
+[node name="RayCast2D2" type="RayCast2D" parent="CharacterBody2D/Turret"]
+position = Vector2(71.25, -31.25)
+target_position = Vector2(600, 0)
+
+[node name="Line2D2" type="Line2D" parent="CharacterBody2D/Turret/RayCast2D2"]
+position = Vector2(2.50001, 2.49999)
+points = PackedVector2Array(-3.74999, -2.5, 587.5, -2.5)
+width = 0.0
+default_color = Color(1, 0, 0.0470588, 0.705882)
+
+[node name="Nozzle 1" type="Sprite2D" parent="CharacterBody2D/Turret"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(102.5, -30)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_xfh7b")
+
+[node name="Nozzle 2" type="Sprite2D" parent="CharacterBody2D/Turret"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(98.75, 27.5)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_xfh7b")
+
+[node name="Red Light" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ax67d")
+}
+
+[node name="Explosion" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-33, -3)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("6_ot1k3")
+hframes = 8
+vframes = 8
+frame = 22
+
+[node name="Explode" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_use61")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="Alert Area" to="." method="_on_alert_area_body_entered"]
+[connection signal="body_exited" from="Alert Area" to="." method="_on_alert_area_body_exited"]
